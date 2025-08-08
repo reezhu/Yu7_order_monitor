@@ -1,0 +1,85 @@
+{
+  "global_settings": {
+    "check_interval": 15,
+    "log_level": "INFO"
+  },
+  "monitoring_tasks": [
+    {
+      "task_id": "task_001",
+      "task_name": "小米汽车订单监控",
+      "enabled": true,
+      "order_id": "填入你的订单id",
+      "user_id": 123123123,
+      "url": "https://api.retail.xiaomiev.com/mtop/car-order/order/detail",
+      "headers": {
+        "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 18_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 MicroMessenger/8.0.61(0x18003d34) NetType/4G Language/zh_CN",
+        "Accept-Encoding": "gzip,compress,br,deflate",
+        "Content-Type": "application/json",
+        "configSelectorVersion": "2",
+        "content-type": "application/json; charset=utf-8",
+        "deviceappversion": "1.16.0",
+        "x-user-agent": "channel/car platform/car.wxlite",
+        "Referer": "https://servicewechat.com/wx183d85f5e5e273c6/101/page-frame.html",
+        "Cookie": "填入你的cookie"
+      },
+      "notifications": {
+        "email": {
+          "enabled": true,
+          "smtp_config": {
+            "smtp_server": "smtp.qq.com",
+            "smtp_port": 587,
+            "sender": "填入你的发件邮箱",
+            "password": "填入你的应用授权码"
+          },
+          "receivers": [
+            {
+              "email": "填收件人",
+              "name": "主要接收者",
+              "enabled": true
+            },
+            {
+              "email": "填收件人",
+              "name": "备用接收者",
+              "enabled": true
+            }
+          ]
+        },
+        "qq": {
+          "enabled": false,
+          "qq_emails": [
+            {
+              "email": "填收件人",
+              "name": "QQ通知1",
+              "enabled": true
+            },
+            {
+              "email": "backup_qq@qq.com",
+              "name": "QQ通知2",
+              "enabled": false
+            }
+          ]
+        },
+        "sms": {
+          "enabled": false,
+          "provider": "aliyun",
+          "access_key_id": "your_access_key_id",
+          "access_key_secret": "your_access_key_secret",
+          "sign_name": "your_sign_name",
+          "template_code": "your_template_code",
+          "phone_numbers": [
+            {
+              "phone": "your_phone_number",
+              "name": "主要手机号",
+              "enabled": true
+            },
+            {
+              "phone": "backup_phone_number",
+              "name": "备用手机号",
+              "enabled": false
+            }
+          ]
+        }
+      }
+    }
+  ]
+} 
