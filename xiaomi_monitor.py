@@ -155,7 +155,7 @@ class SingleTaskMonitor:
         # 获取初始状态
         self.last_status = self.get_current_status()
         if self.last_status:
-            logger.info(f"任务 '{self.task_name}' 初始订单状态: {self.last_status}")
+            logger.info(f"任务 '{self.task_name}' 初始订单状态: VID={self.last_status['order_status']}")
     
     def get_current_status(self) -> Optional[Dict[str, Any]]:
         """
@@ -182,10 +182,10 @@ class SingleTaskMonitor:
             if response.status_code == 200:
                 data = response.json()
                 if data.get('code') == 0 and 'data' in data:
-                    status_info = data['data'].get('statusInfo', {})
+                    buy_car_info = data['data'].get('buyCarInfo', {})
                     return {
-                        'order_status': status_info.get('orderStatus'),
-                        'order_status_name': status_info.get('orderStatusName'),
+                        'order_status': buy_car_info.get('vid'),
+                        'order_status_name': buy_car_info.get('vid'),
                         'order_id': self.order_id,
                         'task_id': self.task_id,
                         'task_name': self.task_name
